@@ -1,13 +1,38 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Inject} from 'angular2/core';
+import * as ngCore from 'angular2/core';
+import * as browser from 'angular2/platform/browser';
+
+import {RouteConfig, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {provideStore} from '@ngrx/store';
+
 import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
 import {MyCounter} from './counter';
+import {counter} from './reducers/counter';
+
+require('style!css!ng2-material/dist/ng2-material.css');
+require('style!css!ng2-material/dist/font.css');
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
+
+
+/*
+ * App Environment Providers
+ * providers that only live in certain environment
+ */
+const ENV_PROVIDERS = [];
+
+if ('production' === process.env.ENV) {
+  ngCore.enableProdMode();
+  ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS_PROD_MODE);
+} else {
+  ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS);
+}
 
 /*
  * App Component
@@ -15,7 +40,15 @@ import {MyCounter} from './counter';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
+  providers: [
+    ...ENV_PROVIDERS,
+    ...HTTP_PROVIDERS,
+    ...ROUTER_PROVIDERS,
+    ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
+    provideStore({counter}, {counter: 0}),
+    ...FORM_PROVIDERS
+  ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
   pipes: [],
   styles: [`
@@ -78,8 +111,8 @@ export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor() {
-
+  constructor(@Inject('toastr') toastr:any) {
+      toastr.success('Yo!');
   }
 }
 
