@@ -7,6 +7,8 @@ import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {provideStore} from '@ngrx/store';
 
+require('style!css!ng2-material/dist/ng2-material.css');
+require('style!css!ng2-material/dist/font.css');
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
 /*
