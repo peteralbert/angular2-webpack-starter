@@ -56,8 +56,13 @@ module.exports = {
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader', exclude: [ helpers.root('node_modules') ] },
 
-      // Support for CSS as raw text
+      // Support for CSS as raw text for style decorators
       { test: /\.css$/,   loader: 'raw-loader', exclude: [ helpers.root('node_modules') ] },
+
+      //Support for CSS in HTML
+      { test: /\.css$/, loader: "style-loader!css-loader", exclude: [ helpers.root('node_modules') ] },
+
+
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
