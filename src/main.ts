@@ -4,10 +4,11 @@ import {UpgradeAdapter} from 'angular2/upgrade';
 require('angular-toastr');
 require('style!css!angular-toastr/dist/angular-toastr.css');
 import {App} from './app/app';
+import {AppComponent} from './app/components/app/app.component';
 
 var adapter = new UpgradeAdapter();
 angular.module('app', ['toastr'])
-    .directive('app', adapter.downgradeNg2Component(App));
+    .directive('app', adapter.downgradeNg2Component(AppComponent));
 
 adapter.upgradeNg1Provider('toastr');
 

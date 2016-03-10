@@ -1,0 +1,44 @@
+<style>
+    div.toggle-container {
+        background-color: #eeeeee;
+    }
+    a.toggle {
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    a.toggle:focus {
+        outline:0 !important;
+    }
+    
+    a.toggle > i.material-icons {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle !important;
+    }
+</style>
+<div flex layout="row">
+    <div flex layout="row" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" *ngIf="isOpen()">
+        <div layout="column" flex>
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools" translate>Description</h1>
+            </md-toolbar>
+            <md-content layout-padding flex>
+                <span>TODO</span>
+            </md-content>
+        </div>
+        <div class="toggle-container toggle-container-close" layout="row" layout-align="center center" *ngIf="isOpen()">
+            <a class="toggle" aria-label="Toggle" (click)="toggle()" *ngIf="isOpen()">
+                <i class="material-icons prefix">cake</i>
+            </a>
+        </div>
+    </div>
+    <div class="toggle-container toggle-container-open" layout="row" layout-align="center center" *ngIf="!isOpen()">
+        <div>
+            <a class="toggle" aria-label="Toggle" (click)="toggle()">
+                <i class="material-icons prefix">cake</i>
+            </a>
+        </div>
+    </div>
+</div>

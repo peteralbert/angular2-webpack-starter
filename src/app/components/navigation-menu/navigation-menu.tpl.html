@@ -1,0 +1,19 @@
+<div id="menu">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <button class="md-raised-button"
+                md-raised-button
+                *ngFor="#route of routes"
+                [routerLink]="['/Shell/' + route.name]"
+                (click)="mouseClickComponent=route.component.name"
+                (mouseover)="mouseOverComponent=route.component.name"
+                (mouseout)="mouseOverComponent=undefined"
+                [ngClass]="{'md-accent': mouseClickComponent == route.component.name || mouseOverComponent == route.component.name}">
+                <span hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
+                <div show-md hide-gt-md>
+                    <i class="material-icons prefix">{{route.data.icon}}</i>
+                </div>
+            </button>
+        </div>
+    </md-toolbar>
+</div>
