@@ -16,10 +16,6 @@ import {Home} from './home/home';
 import {MyCounter} from './counter';
 import {counter} from './reducers/counter';
 
-require('style!css!ng2-material/dist/ng2-material.css');
-require('style!css!ng2-material/dist/font.css');
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
-
 
 /*
  * App Environment Providers

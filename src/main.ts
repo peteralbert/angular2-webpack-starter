@@ -1,12 +1,23 @@
 let angular = require('angular');
 import {UpgradeAdapter} from 'angular2/upgrade';
 
+// include modules built for angular 1.x here
 require('angular-toastr');
 require('style!css!angular-toastr/dist/angular-toastr.css');
+
+require('angular-material');
+require('style!css!angular-material/angular-material.css');
+
 import {App} from './app/app';
 
 var adapter = new UpgradeAdapter();
-angular.module('app', ['toastr'])
+angular.module('app', [
+    // angular modules
+    'ngMaterial',
+    
+    // external modules    
+    'toastr'
+])
     .directive('app', adapter.downgradeNg2Component(App));
 
 adapter.upgradeNg1Provider('toastr');

@@ -6,9 +6,9 @@ import {INCREMENT, DECREMENT, RESET} from './reducers/counter';
 @Component({
     selector: 'my-counter',
     template: `
-      <button md-raised-button class="md-raised md-primary" (click)="increment()">Increment</button>
-        <div>Current Count: {{ counter | async }}</div>
-        <button md-raised-button (click)="decrement()">Decrement</button>
+      <a class="md-button md-raised md-primary" (click)="increment()">Increment</a>
+        <md-card style="padding: 2em; width: 250px;" md-whiteframe="4">Current Count: {{ counter | async }}</md-card>
+        <a class="md-button md-raised md-primary" (click)="decrement()">Decrement</a>
     `
 })
 export class MyCounter {
