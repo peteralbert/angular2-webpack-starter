@@ -12,7 +12,8 @@ export const ROUTE_CONFIG = [
         data: {
             label: 'Home',
             description: loremIpsum,
-            icon: 'home'
+            icon: 'mdi-home',
+            class: ''
         }
     },
     {
@@ -22,7 +23,8 @@ export const ROUTE_CONFIG = [
         data: {
             label: 'Component 1',
             description: loremIpsum,
-            icon: 'numeric-1-box'
+            icon: 'mdi-numeric-1-box',
+            class: ''
         }
     },
     {
@@ -32,7 +34,8 @@ export const ROUTE_CONFIG = [
         data: {
             label: 'Component 2',
             description: loremIpsum,
-            icon: 'numeric-2-box'
+            icon: 'mdi-numeric-2-box',
+            class: ''
         }
     }
 ]

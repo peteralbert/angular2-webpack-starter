@@ -7,7 +7,7 @@ import {HeaderComponent} from '../header/header.component';
 import {ROUTE_CONFIG} from './route-config'
 
 require('style!css!ng2-material/dist/ng2-material.css');
-require('style!css!ng2-material/dist/font.css');
+require('style!css!mdi/css/materialdesignicons.css');
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
 /*

@@ -1,21 +1,13 @@
 <style>
     div.toggle-container {
         background-color: #eeeeee;
+        cursor: pointer !important;
     }
-    a.toggle {
-        min-width: 0 !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
+    div.toggle-container:hover {
+        background-color: #dddddd;
     }
     a.toggle:focus {
         outline:0 !important;
-    }
-    
-    a.toggle > i.material-icons {
-        width: 24px;
-        height: 24px;
-        vertical-align: middle !important;
     }
 </style>
 <div flex layout="row">
@@ -28,16 +20,16 @@
                 <span>TODO</span>
             </md-content>
         </div>
-        <div class="toggle-container toggle-container-close" layout="row" layout-align="center center" *ngIf="isOpen()">
-            <a class="toggle" aria-label="Toggle" (click)="toggle()" *ngIf="isOpen()">
-                <i class="material-icons prefix">cake</i>
+        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="isOpen()">
+            <a class="toggle" aria-label="Toggle" layout layout-align="center center" *ngIf="isOpen()">
+                <i class="mdi mdi-menu-left"></i>
             </a>
         </div>
     </div>
-    <div class="toggle-container toggle-container-open" layout="row" layout-align="center center" *ngIf="!isOpen()">
+    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="!isOpen()">
         <div>
-            <a class="toggle" aria-label="Toggle" (click)="toggle()">
-                <i class="material-icons prefix">cake</i>
+            <a class="toggle" aria-label="Toggle">
+                <i class="mdi mdi-menu-right"></i>
             </a>
         </div>
     </div>

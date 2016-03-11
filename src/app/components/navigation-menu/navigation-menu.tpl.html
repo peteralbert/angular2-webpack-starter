@@ -1,7 +1,19 @@
+<style>
+    [md-raised-button] {
+        min-width: 0px !important;
+    }
+    [md-raised-button] > span.text {
+        min-width: 88px !important;
+    }
+    [md-raised-button] > span.icon {
+        min-width: 24px !important;
+        min-height: 24px !important;
+    }
+</style>
 <div id="menu">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <button class="md-raised-button"
+            <!--<button
                 md-raised-button
                 *ngFor="#route of routes"
                 [routerLink]="['/Shell/' + route.name]"
@@ -9,10 +21,22 @@
                 (mouseover)="mouseOverComponent=route.component.name"
                 (mouseout)="mouseOverComponent=undefined"
                 [ngClass]="{'md-accent': mouseClickComponent == route.component.name || mouseOverComponent == route.component.name}">
-                <span hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
-                <div show-md hide-gt-md>
-                    <i class="material-icons prefix">{{route.data.icon}}</i>
-                </div>
+                <span class="text" hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
+                <span class="icon" layout layout-align="center center" show-md hide-gt-md>
+                    <i [class]="'mdi ' + route.data.icon"></i>
+                </span>
+            </button>-->
+            <button
+                md-raised-button
+                *ngFor="#route of routes"
+                [routerLink]="['/Shell/' + route.name]"
+                (mouseover)="mouseOverComponent=route.component.name"
+                (mouseout)="mouseOverComponent=undefined"
+                [ngClass]="{'md-accent': isRouteActive(['/Shell/' + route.name]) || mouseOverComponent}">
+                <span class="text" hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
+                <span class="icon" layout layout-align="center center" show-md hide-gt-md>
+                    <i [class]="'mdi ' + route.data.icon"></i>
+                </span>
             </button>
         </div>
     </md-toolbar>

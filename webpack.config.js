@@ -63,7 +63,7 @@ module.exports = {
       { test: /\.css$/, loader: "style-loader!css-loader", exclude: [ helpers.root('node_modules') ] },
 
       //Support for font files
-      { test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader : 'file-loader'},
+      { test   : /\.(ttf|eot|svg|woff(2)?)(\?[\.=a-z0-9]+)?$/, loader : 'file-loader'},
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }

@@ -16,6 +16,12 @@ export class NavigationMenuComponent {
         private router: Router
     ) {}
     
+    isRouteActive(linkParams: any) {
+        let instruction = this.router.generate(linkParams);
+        let isRouteActive = this.router.isRouteActive(instruction);
+        return isRouteActive;
+    }
+    
     navigate(routeName) {
         this.router.navigate([routeName]);
     }
