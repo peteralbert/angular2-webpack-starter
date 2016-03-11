@@ -9,10 +9,10 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 })
 export class AboutComponent {
     
-    constructor (private router: Router) {
+    constructor (private _router: Router) {
     }
     
     close() {
-        this.router.navigate(['/Shell']);
+        this._router.navigate(['/Shell']);
     }
 }

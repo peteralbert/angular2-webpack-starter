@@ -5,4 +5,5 @@ import {Component} from 'angular2/core';
   template: require('./component2.tpl.html')
 })
 
-export class Component2Component {}
+export class Component2Component {
+}

@@ -12,17 +12,11 @@ import {ROUTE_CONFIG} from '../shell/route-config'
 })
 export class NavigationMenuComponent {
     constructor(
-        @Inject('ROUTE_CONFIG') private routes:any,
-        private router: Router
+        @Inject('ROUTE_CONFIG') public routes:any,
+        private _router: Router
     ) {}
     
-    isRouteActive(linkParams: any) {
-        let instruction = this.router.generate(linkParams);
-        let isRouteActive = this.router.isRouteActive(instruction);
-        return isRouteActive;
-    }
-    
     navigate(routeName) {
-        this.router.navigate([routeName]);
+        this._router.navigate([routeName]);
     }
 }

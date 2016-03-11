@@ -1,20 +1,17 @@
-import {Component, OnInit} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {Component} from 'angular2/core';
+import {Router} from 'angular2/router';
 
 @Component({
   selector: 'navigation-description',
-  template: require('./navigation-description.tpl.html')
+  template: require('./navigation-description.tpl.html'),
+  host: {'layout': 'column'}
 })
 
-export class NavigationDescriptionComponent implements OnInit {
+export class NavigationDescriptionComponent {
     
     private _isOpen: boolean = true;
     
-    constructor (private router: Router) {
-    }
-    
-    ngOnInit() {
-        
+    constructor (private _router: Router) {
     }
     
     public isOpen()

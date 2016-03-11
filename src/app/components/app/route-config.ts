@@ -15,4 +15,4 @@ export const ROUTE_CONFIG = [
         component: AboutComponent,
         data: {}
     }
-]
+];

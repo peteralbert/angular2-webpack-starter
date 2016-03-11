@@ -1,4 +1,4 @@
-import {BlankComponent} from '../blank/blank.component';
+import {HomeComponent} from '../home/home.component';
 import {Component1Component} from '../component1/component1.component';
 import {Component2Component} from '../component2/component2.component';
 
@@ -7,8 +7,8 @@ let loremIpsum = 'Mauris eleifend est et turpis. Duis id erat. Suspendisse poten
 export const ROUTE_CONFIG = [
     {
         path: '/',
-        name: 'Blank',
-        component: BlankComponent,
+        name: 'Home',
+        component: HomeComponent,
         data: {
             label: 'Home',
             description: loremIpsum,
@@ -38,4 +38,4 @@ export const ROUTE_CONFIG = [
             class: ''
         }
     }
-]
+];
