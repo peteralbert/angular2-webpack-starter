@@ -16,8 +16,7 @@
             <md-toolbar class="md-theme-light">
                 <h1 class="md-toolbar-tools" translate>Description</h1>
             </md-toolbar>
-            <md-content layout-padding flex>
-                <span>TODO</span>
+            <md-content flex layout layout-padding [innerHTML]="activeRouteData.data?.description" style="width: 300px;">
             </md-content>
         </div>
         <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="isOpen()">

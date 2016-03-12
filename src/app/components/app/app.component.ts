@@ -5,6 +5,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, Hash
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {HeaderComponent} from '../header/header.component';
 import {ROUTE_CONFIG} from './route-config'
+import {ActiveRouteDataService} from '../../services/active-route-data.service'
 
 require('style!css!ng2-material/dist/ng2-material.css');
 require('style!css!mdi/css/materialdesignicons.css');
@@ -38,10 +39,10 @@ if ('production' === process.env.ENV) {
         ...MATERIAL_PROVIDERS,
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
+        ActiveRouteDataService
     ]
 })
 
 @RouteConfig(ROUTE_CONFIG)
 
-export class AppComponent {
-}
+export class AppComponent {}

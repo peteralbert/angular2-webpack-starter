@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ActiveRouteDataService} from '../../services/active-route-data.service'
 
 @Component({
   selector: 'about',
@@ -9,10 +10,9 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 })
 export class AboutComponent {
     
-    constructor (private _router: Router) {
+    constructor (
+        public activeRouteData: ActiveRouteDataService
+    ) {
     }
     
-    close() {
-        this._router.navigate(['/Shell']);
-    }
 }

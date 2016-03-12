@@ -6,12 +6,8 @@
         min-width: 88px !important;
     }
     [md-raised-button] > span.icon {
-        min-width: 24px !important;
-        min-height: 24px !important;
-    }
-    [md-raised-button].router-link-active {
-        color: white;
-        background-color: #e91e63;
+        min-width: 36px !important;
+        min-height: 36px !important;
     }
 </style>
 <div id="menu">
@@ -19,11 +15,12 @@
         <div class="md-toolbar-tools">
             <button
                 md-raised-button
+                class="{{route.data.class}}"
                 *ngFor="#route of routes"
                 [routerLink]="['/Shell/' + route.name]"
                 (mouseover)="mouseOverComponent=route.component.name"
                 (mouseout)="mouseOverComponent=undefined"
-                [ngClass]="{'md-accent': mouseOverComponent ==  route.component.name}">
+                [ngClass]="{'md-accent': mouseOverComponent ==  route.component.name || activeRouteData.data?.component == route.component.name }">
                 <span class="text" hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
                 <span class="icon" layout layout-align="center center" show-md hide-gt-md>
                     <i [class]="'mdi ' + route.data.icon"></i>

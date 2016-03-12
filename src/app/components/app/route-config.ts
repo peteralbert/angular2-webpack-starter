@@ -7,12 +7,16 @@ export const ROUTE_CONFIG = [
         name: 'Shell',
         component: ShellComponent,
         useAsDefault: true,
-        data: {}
+        data: {
+            component: 'ShellComponent'
+        }
     },
     {
         path: '/about',
         name: 'About',
         component: AboutComponent,
-        data: {}
+        data: {
+            component: 'AboutComponent'
+        }
     }
 ];

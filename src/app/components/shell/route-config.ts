@@ -2,18 +2,18 @@ import {HomeComponent} from '../home/home.component';
 import {Component1Component} from '../component1/component1.component';
 import {Component2Component} from '../component2/component2.component';
 
-let loremIpsum = 'Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus. Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.';
-
 export const ROUTE_CONFIG = [
     {
         path: '/',
         name: 'Home',
         component: HomeComponent,
         data: {
+            component: 'HomeComponent',
             label: 'Home',
-            description: loremIpsum,
+            description: require('../home/description.tpl.html'),
             icon: 'mdi-home',
-            class: ''
+            class: 'home',
+            aboutLinkParams: '/Shell/Home'
         }
     },
     {
@@ -21,10 +21,12 @@ export const ROUTE_CONFIG = [
         name: 'Component1',
         component: Component1Component,
         data: {
+            component: 'Component1Component',
             label: 'Component 1',
-            description: loremIpsum,
+            description: require('../component1/description.tpl.html'),
             icon: 'mdi-numeric-1-box',
-            class: ''
+            class: 'component-1',
+            aboutLinkParams: '/Shell/Component1'
         }
     },
     {
@@ -32,10 +34,12 @@ export const ROUTE_CONFIG = [
         name: 'Component2',
         component: Component2Component,
         data: {
+            component: 'Component2Component',
             label: 'Component 2',
-            description: loremIpsum,
+            description: require('../component2/description.tpl.html'),
             icon: 'mdi-numeric-2-box',
-            class: ''
+            class: 'component-2',
+            aboutLinkParams: '/Shell/Component2'
         }
     }
 ];

@@ -7,4 +7,5 @@ import {NavigationMenuComponent} from '../navigation-menu/navigation-menu.compon
   template: require('./header.tpl.html'),
   directives: [...ROUTER_DIRECTIVES, NavigationMenuComponent]
 })
+
 export class HeaderComponent {}

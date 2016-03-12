@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {ActiveRouteDataService} from '../../services/active-route-data.service';
 
 @Component({
   selector: 'navigation-description',
@@ -11,8 +11,7 @@ export class NavigationDescriptionComponent {
     
     private _isOpen: boolean = true;
     
-    constructor (private _router: Router) {
-    }
+    constructor (public activeRouteData: ActiveRouteDataService) {}
     
     public isOpen()
     {
@@ -23,4 +22,5 @@ export class NavigationDescriptionComponent {
     {
         this._isOpen = !this._isOpen;
     }
+    
 }
