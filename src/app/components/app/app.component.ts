@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router, Location} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {HeaderComponent} from '../header/header.component';
 import {ROUTE_CONFIG} from './route-config'
@@ -45,4 +45,22 @@ if ('production' === process.env.ENV) {
 
 @RouteConfig(ROUTE_CONFIG)
 
-export class AppComponent {}
+export class AppComponent implements OnInit {
+    
+    constructor(
+        private _router: Router,
+        private _location: Location,
+        private _activeRouteData: ActiveRouteDataService
+    ) {}
+    
+    ngOnInit() {
+        this._router.subscribe((url) => {
+           this._router.recognize(url).then((instruction) => {
+               if (instruction.child) {
+                   this._activeRouteData.data = instruction.child.component.routeData.data;
+               }
+           });
+        });
+    }
+    
+}
