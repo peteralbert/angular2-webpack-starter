@@ -1,14 +1,27 @@
 
+<style>
+    .invalid { background-color: pink !important; }
+    .alerts { float: right; margin-top: -40px; }
+    .alert { color: red; float: right; }
+</style>
 <div>	
     <h1>Example Form</h1>
 	<h2>Personal Bank Account Initial Application</h2>
-	<form class="grid-form">
+	<form class="grid-form" novalidate #form="ngForm" (ngSubmit)="submit(form.value)">
 		<fieldset>
 			<legend>Please open an account at</legend>
 			<div data-row-span="1">
-				<div data-field-span="1" class="" style="height: 52px;">
+				<div data-field-span="1" class="" style="height: 52px;"
+                    [ngClass]="{'invalid': !branchName.valid}">
 					<label>Branch Name</label>
-					<input type="text" autofocus="">
+					<input type="text" autofocus=""
+                        ngControl="branchName" #branchName="ngForm"
+                        [ngClass]="{'invalid': !branchName.valid && !branchName.pristine  && !branchName.untouched}"
+                        required minlength="3">
+                    <div class="alerts" *ngIf="branchName.errors">
+                        <template [ngIf]="branchName.errors.required"><span class="alert" title="Branch name is required."><i class="mdi mdi-alert"></i></span></template>
+                        <template [ngIf]="branchName.errors.minlength"><span class="alert" title="Branch name must be at least {{branchName.errors.minlength.requiredLength}} characters."><i class="mdi mdi-alert"></i></span></template>
+                    </div>
 				</div>
 			</div>
 		</fieldset>
@@ -25,15 +38,24 @@
 					<label><input type="radio" name="customer-title[]"> Mrs.</label> &nbsp;
 					<label><input type="radio" name="customer-title[]"> Ms.</label>
 				</div>
-				<div data-field-span="3" style="height: 52px;">
+				<div data-field-span="3" style="height: 52px;"
+                    [ngClass]="{'invalid': !fullName.valid}">
 					<label>Full Name</label>
-					<input type="text">
+					<input type="text"
+                        ngControl="fullName" #fullName="ngForm"
+                        [ngClass]="{'invalid': !fullName.valid && !fullName.pristine  && !fullName.untouched}"
+                        required minlength="3">
+                    <div class="alerts" *ngIf="fullName.errors">
+                        <template [ngIf]="fullName.errors.required"><span class="alert" title="Full name is required."><i class="mdi mdi-alert"></i></span></template>
+                        <template [ngIf]="fullName.errors.minlength"><span class="alert" title="Full name must be at least {{fullName.errors.minlength.requiredLength}} characters."><i class="mdi mdi-alert"></i></span></template>
+                    </div>
 				</div>
 			</div>
 			<div data-row-span="2">
 				<div data-field-span="1" style="height: 56px;">
 					<label>Date of birth</label>
 					<input type="text">
+                    <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
 				</div>
 				<div data-field-span="1" style="height: 56px;">
 					<label>Nationality</label>
@@ -582,5 +604,4 @@
 			</div>
 		</fieldset>
 	</form>
-	<br><br><br><br><br>
 </div>
