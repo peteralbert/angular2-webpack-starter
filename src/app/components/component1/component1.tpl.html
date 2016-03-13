@@ -2,15 +2,17 @@
 <style>
     .invalid { background-color: pink !important; }
     .alerts { float: right; margin-top: -40px; }
-    .alert { color: red; float: right; }
+    .alert { color: red; float: right; cursor:  }
     button[type="submit"] { position: fixed; bottom: 25px; right: 25px; }
     [md-fab] {
         color: white;
         background-color: green;
     }
-    [md-fab][disabled] {
-        color: white;
-        background-color: red;
+    [md-fab]:hover {
+        background-color: darkgreen !important;
+    }
+    [md-fab][disabled], [md-fab][disabled]:hover {
+        background-color: red !important;
     }
 </style>
 <div>	
@@ -69,6 +71,7 @@
 				<div data-field-span="1" style="height: 56px;">
 					<label>Date of birth</label>
 					<input type="text">
+                    <!-- TODO: Get md-datepicker to work. -->
                     <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
 				</div>
 				<div data-field-span="1" style="height: 56px;">
