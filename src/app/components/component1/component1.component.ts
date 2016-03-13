@@ -9,11 +9,7 @@ import {Component} from 'angular2/core';
 export class Component1Component {
     
     submit(form: any) {
-        
-    }
-    
-    alert(s) {
-        console.log(s);
+        console.log(form);
     }
     
 }

@@ -3,11 +3,25 @@
     .invalid { background-color: pink !important; }
     .alerts { float: right; margin-top: -40px; }
     .alert { color: red; float: right; }
+    button[type="submit"] { position: fixed; bottom: 25px; right: 25px; }
+    [md-fab] {
+        color: white;
+        background-color: green;
+    }
+    [md-fab][disabled] {
+        color: white;
+        background-color: red;
+    }
 </style>
 <div>	
     <h1>Example Form</h1>
 	<h2>Personal Bank Account Initial Application</h2>
 	<form class="grid-form" novalidate #form="ngForm" (ngSubmit)="submit(form.value)">
+        <button type="submit" md-fab class="md-mini" aria-label="Submit" [disabled]="!form.valid">
+            <span layout layout-align="center center">
+                <i class="mdi mdi-check"></i>
+            </span>
+        </button>
 		<fieldset>
 			<legend>Please open an account at</legend>
 			<div data-row-span="1">
@@ -604,4 +618,5 @@
 			</div>
 		</fieldset>
 	</form>
+    <br><br><br><br><br>
 </div>
