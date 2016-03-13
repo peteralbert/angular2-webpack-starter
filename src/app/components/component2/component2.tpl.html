@@ -1,1 +1,38 @@
-<h1>Component 2</h1>
+<style>
+    div.toggle-container {
+        background-color: #eeeeee;
+        cursor: pointer !important;
+    }
+    div.toggle-container:hover {
+        background-color: #dddddd;
+    }
+    a.toggle:focus {
+        outline:0 !important;
+    }
+</style>
+<div flex layout="row" layout-padding>
+    <h1>Component 2</h1>
+</div>
+<div layout="row">
+    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="!isOpen()" title="Click to open.">
+        <div>
+            <a class="toggle" aria-label="Toggle">
+                <i class="mdi mdi-menu-left"></i>
+            </a>
+        </div>
+    </div>
+    <div flex layout="row" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" *ngIf="isOpen()">
+        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="isOpen()" title="Click to close.">
+            <a class="toggle" aria-label="Toggle" layout layout-align="center center" *ngIf="isOpen()">
+                <i class="mdi mdi-menu-right"></i>
+            </a>
+        </div>
+        <div layout="column" flex>
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools" translate>Tools</h1>
+            </md-toolbar>
+            <md-content flex layout style="width: 300px;">
+            </md-content>
+        </div>
+    </div>
+</div>

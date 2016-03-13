@@ -4,6 +4,7 @@ import * as browser from 'angular2/platform/browser';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router, Location} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {HeaderComponent} from '../header/header.component';
+import {FooterComponent} from '../footer/footer.component';
 import {ROUTE_CONFIG} from './route-config'
 import {ActiveRouteDataService} from '../../services/active-route-data.service'
 
@@ -30,7 +31,8 @@ if ('production' === process.env.ENV) {
     directives: [
         ...ROUTER_DIRECTIVES,
         ...MATERIAL_DIRECTIVES,
-        HeaderComponent
+        HeaderComponent,
+        FooterComponent
     ],
     providers: [
         ...ENV_PROVIDERS,
