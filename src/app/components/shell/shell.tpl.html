@@ -1,4 +1,10 @@
-<navigation-description></navigation-description>
-<div id="component" flex layout="row">
-    <router-outlet></router-outlet>
+<div flex layout="column">
+    <shell-header></shell-header>
+    <div flex layout="row">
+        <navigation-description *ngIf="activeRouteData.data?.description"></navigation-description>
+        <div id="content" flex layout="row">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <footer></footer>
 </div>

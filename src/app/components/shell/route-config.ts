@@ -1,6 +1,7 @@
 import {HomeComponent} from '../home/home.component';
 import {Component1Component} from '../component1/component1.component';
 import {Component2Component} from '../component2/component2.component';
+import {AboutComponent} from '../about/about.component';
 
 export const ROUTE_CONFIG = [
     {
@@ -10,10 +11,8 @@ export const ROUTE_CONFIG = [
         data: {
             component: 'HomeComponent',
             label: 'Home',
-            description: require('../home/description.tpl.html'),
             icon: 'mdi-home',
-            class: 'home',
-            aboutLinkParams: '/Shell/Home'
+            class: 'home'
         }
     },
     {
@@ -25,8 +24,7 @@ export const ROUTE_CONFIG = [
             label: 'Component 1',
             description: require('../component1/description.tpl.html'),
             icon: 'mdi-numeric-1-box',
-            class: 'component-1',
-            aboutLinkParams: '/Shell/Component1'
+            class: 'component-1'
         }
     },
     {
@@ -38,8 +36,18 @@ export const ROUTE_CONFIG = [
             label: 'Component 2',
             description: require('../component2/description.tpl.html'),
             icon: 'mdi-numeric-2-box',
-            class: 'component-2',
-            aboutLinkParams: '/Shell/Component2'
+            class: 'component-2'
+        }
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: AboutComponent,
+        data: {
+            component: 'AboutComponent',
+            label: 'About',
+            icon: 'mdi-help',
+            class: 'about'
         }
     }
 ];

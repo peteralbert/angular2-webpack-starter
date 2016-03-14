@@ -3,9 +3,9 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {NavigationMenuComponent} from '../navigation-menu/navigation-menu.component';
 
 @Component({
-  selector: 'header',
-  template: require('./header.tpl.html'),
+  selector: 'shell-header',
+  template: require('./shell-header.tpl.html'),
   directives: [...ROUTER_DIRECTIVES, NavigationMenuComponent]
 })
 
-export class HeaderComponent {}
+export class ShellHeaderComponent {}

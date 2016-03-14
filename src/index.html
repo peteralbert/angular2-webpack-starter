@@ -16,7 +16,11 @@
 <body layout="column">
 
   <app flex layout="column">
-    Loading...
+    <div flex layout="row" layout-align="center center">
+        <div>
+            <img src="assets/img/ajax-loader.gif">
+        </div>
+    </div>
   </app>
 
   <% if (webpackConfig.metadata.ENV === 'development') { %>

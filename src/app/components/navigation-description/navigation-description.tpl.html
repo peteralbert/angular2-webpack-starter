@@ -19,13 +19,13 @@
             <md-content flex layout [innerHTML]="activeRouteData.data?.description" style="width: 300px;">
             </md-content>
         </div>
-        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="isOpen()" title="Click to close.">
+        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="isOpen()" title="Click to close description.">
             <a class="toggle" aria-label="Toggle" layout layout-align="center center" *ngIf="isOpen()">
                 <i class="mdi mdi-menu-left"></i>
             </a>
         </div>
     </div>
-    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="!isOpen()" title="Click to open.">
+    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggle()" *ngIf="!isOpen()" title="Click to open description.">
         <div>
             <a class="toggle" aria-label="Toggle">
                 <i class="mdi mdi-menu-right"></i>

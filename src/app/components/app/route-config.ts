@@ -1,22 +1,22 @@
-import {AboutComponent} from '../about/about.component';
+import {PublicComponent} from '../public/public.component';
 import {ShellComponent} from '../shell/shell.component';
 
 export const ROUTE_CONFIG = [
     {
         path: '/...',
-        name: 'Shell',
-        component: ShellComponent,
+        name: 'Public',
+        component: PublicComponent,
         useAsDefault: true,
         data: {
-            component: 'ShellComponent'
+            component: 'PublicComponent'
         }
     },
     {
-        path: '/about',
-        name: 'About',
-        component: AboutComponent,
+        path: '/shell/...',
+        name: 'Shell',
+        component: ShellComponent,
         data: {
-            component: 'AboutComponent'
+            component: 'ShellComponent'
         }
     }
 ];

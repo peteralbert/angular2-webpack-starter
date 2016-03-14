@@ -9,7 +9,7 @@ import {ActiveRouteDataService} from '../../services/active-route-data.service';
 
 export class NavigationDescriptionComponent {
     
-    private _isOpen: boolean = true;
+    private _isOpen: boolean = false;
     
     constructor (public activeRouteData: ActiveRouteDataService) {}
     

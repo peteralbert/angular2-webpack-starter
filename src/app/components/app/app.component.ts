@@ -3,9 +3,9 @@ import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router, Location} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {HeaderComponent} from '../header/header.component';
-import {FooterComponent} from '../footer/footer.component';
+
 import {ROUTE_CONFIG} from './route-config'
+import {ApplicationStateService} from '../../services/application-state.service';
 import {ActiveRouteDataService} from '../../services/active-route-data.service'
 
 require('style!css!ng2-material/dist/ng2-material.css');
@@ -30,9 +30,7 @@ if ('production' === process.env.ENV) {
     template: require('./app.tpl.html'),
     directives: [
         ...ROUTER_DIRECTIVES,
-        ...MATERIAL_DIRECTIVES,
-        HeaderComponent,
-        FooterComponent
+        ...MATERIAL_DIRECTIVES
     ],
     providers: [
         ...ENV_PROVIDERS,
@@ -41,6 +39,7 @@ if ('production' === process.env.ENV) {
         ...MATERIAL_PROVIDERS,
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
+        ApplicationStateService,
         ActiveRouteDataService
     ]
 })
