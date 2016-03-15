@@ -21,7 +21,7 @@ export const ROUTE_CONFIG = [
         component: Component1Component,
         data: {
             component: 'Component1Component',
-            label: 'Component 1',
+            label: 'Example Form',
             description: require('../component1/description.tpl.html'),
             icon: 'mdi-numeric-1-box',
             class: 'component-1'

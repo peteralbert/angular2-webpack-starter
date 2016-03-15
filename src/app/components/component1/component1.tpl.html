@@ -1,17 +1,17 @@
 
 <style>
-    .invalid { background-color: pink !important; }
-    .alerts { float: right; margin-top: -38px; }
-    .alert { color: red; cursor: default; }
+    .invalid { background-color: lightcyan !important; }
+    .alerts { float: right; margin-top: -36px; }
+    .alert { color: red !important; }
     button[type="submit"] { position: fixed; bottom: 45px; right: 25px; font-size: larger; }
-    [md-fab] {
+    [md-raised-button] {
         color: white;
         background-color: green;
     }
-    [md-fab]:hover {
+    [md-raised-button]:hover {
         background-color: darkgreen !important;
     }
-    [md-fab][disabled], [md-fab][disabled]:hover {
+    [md-raised-button][disabled], [md-fab][disabled]:hover {
         background-color: red !important;
     }
 </style>
@@ -19,9 +19,8 @@
     <h1>Example Form</h1>
 	<h2>Personal Bank Account Initial Application</h2>
 	<form class="grid-form" novalidate #form="ngForm" (ngSubmit)="submit(form.value)">
-        <button type="submit" md-fab class="md-mini" aria-label="Submit" [disabled]="!form.valid">
-            <template [ngIf]="form.valid"><span layout layout-align="center center" title="Click to submit."><i class="mdi mdi-check"></i></span></template>
-            <template [ngIf]="!form.valid"><span layout layout-align="center center" title="The form is invalid and cannot be submitted."><i class="mdi mdi-alert"></i></span></template>
+        <button type="submit" md-raised-button aria-label="Submit" [disabled]="!form.valid">
+            Submit
         </button>
 		<fieldset>
 			<legend>Please open an account at</legend>
@@ -34,8 +33,8 @@
                         [ngClass]="{'invalid': !branchName.valid && !branchName.pristine  && !branchName.untouched}"
                         required minlength="3">
                     <div class="alerts" *ngIf="branchName.errors">
-                        <template [ngIf]="branchName.errors.required"><span class="alert" title="Branch name is required."><i class="mdi mdi-alert"></i></span></template>
-                        <template [ngIf]="branchName.errors.minlength"><span class="alert" title="Branch name must be at least {{branchName.errors.minlength.requiredLength}} characters."><i class="mdi mdi-alert"></i></span></template>
+                        <template [ngIf]="branchName.errors.required"><label class="alert">Please fill out this field.</label></template>
+                        <template [ngIf]="branchName.errors.minlength"><label class="alert">Please lenghen this text to {{branchName.errors.minlength.requiredLength}} characters or more (you are currently using {{branchName.errors.minlength.actualLength}} characters).</label></template>
                     </div>
 				</div>
 			</div>
@@ -61,8 +60,8 @@
                         [ngClass]="{'invalid': !fullName.valid && !fullName.pristine  && !fullName.untouched}"
                         required minlength="3">
                     <div class="alerts" *ngIf="fullName.errors">
-                        <template [ngIf]="fullName.errors.required"><span class="alert" title="Full name is required."><i class="mdi mdi-alert"></i></span></template>
-                        <template [ngIf]="fullName.errors.minlength"><span class="alert" title="Full name must be at least {{fullName.errors.minlength.requiredLength}} characters."><i class="mdi mdi-alert"></i></span></template>
+                        <template [ngIf]="fullName.errors.required"><label class="alert">Please fill out this field.</label></template>
+                        <template [ngIf]="fullName.errors.minlength"><label class="alert">Please lenghen this text to {{branchName.errors.minlength.requiredLength}} characters or more (you are currently using {{branchName.errors.minlength.actualLength}} characters).</label></template>
                     </div>
 				</div>
 			</div>

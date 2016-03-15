@@ -19,4 +19,7 @@ export class Component1Component {
         return Observable.of(window.confirm('If you leave this form your changes will be lost. Leave this form?')).toPromise();
     }
     
+    log(s) {
+        console.log(s);
+    }
 }
