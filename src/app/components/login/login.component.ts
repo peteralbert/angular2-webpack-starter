@@ -16,7 +16,6 @@ export class LoginComponent {
     ) {}
     
     submit(form: any) {
-        
         this._appState.data.login = form;
         this._router.navigate(['/Shell/Home']);
     }

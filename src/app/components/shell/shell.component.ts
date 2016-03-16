@@ -3,9 +3,10 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/toPromise'
+
 import {ROUTE_CONFIG} from './route-config'
-import {ApplicationStateService} from '../../services/application-state.service';
 import {ActiveRouteDataService} from '../../services/active-route-data.service'
+
 import {ShellHeaderComponent} from '../shell-header/shell-header.component';
 import {NavigationDescriptionComponent} from '../navigation-description/navigation-description.component';
 import {FooterComponent} from '../footer/footer.component';
@@ -27,12 +28,9 @@ import {FooterComponent} from '../footer/footer.component';
 export class ShellComponent {
     
     constructor(
-        public appState: ApplicationStateService,
         public activeRouteData: ActiveRouteDataService
     ) {}
     
-    routerCanActivate() {
-        return Observable.of(this.appState.data.login).toPromise();
-    }
+    
     
 }

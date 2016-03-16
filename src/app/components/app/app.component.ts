@@ -3,14 +3,17 @@ import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router, Location} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
-import {ROUTE_CONFIG} from './route-config'
+import {ROUTE_CONFIG} from './route-config';
 import {ApplicationStateService} from '../../services/application-state.service';
-import {ActiveRouteDataService} from '../../services/active-route-data.service'
+import {ActiveRouteDataService} from '../../services/active-route-data.service';
+
+import {provideStore} from '@ngrx/store';
+import {reducer} from '../reducer'
 
 require('style!css!ng2-material/dist/ng2-material.css');
 require('style!css!mdi/css/materialdesignicons.css');
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
 /*
  * App Environment Providers
@@ -40,7 +43,8 @@ if ('production' === process.env.ENV) {
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
         ApplicationStateService,
-        ActiveRouteDataService
+        ActiveRouteDataService,
+        provideStore(reducer)
     ]
 })
 

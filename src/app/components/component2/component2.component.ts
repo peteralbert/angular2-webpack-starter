@@ -1,4 +1,9 @@
 import {Component} from 'angular2/core';
+import {Observable} from 'rxjs'
+import {Store} from '@ngrx/store';
+
+import {IComponent2} from './component2.interface'
+import {TOGGLE_SIDENAV} from './component2.actions';
 
 @Component({
   selector: 'component2',
@@ -8,18 +13,15 @@ import {Component} from 'angular2/core';
 
 export class Component2Component {
     
-    private _isOpen: boolean = true;
+    state: Observable<IComponent2>;
     
-    constructor () {}
-    
-    public isOpen()
-    {
-        return this._isOpen;
+    constructor (public store: Store<boolean>) {
+        this.state = store.select('Component2Reducer');
     }
     
-    public toggle()
-    {
-        this._isOpen = !this._isOpen;
+    toggleSidenav() {
+        console.log('Component2Component::toggleSidenav()');
+        this.store.dispatch({ type: TOGGLE_SIDENAV });
     }
     
 }

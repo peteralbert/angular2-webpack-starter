@@ -31,10 +31,11 @@
 					<input type="text" autofocus=""
                         ngControl="branchName" #branchName="ngForm"
                         [ngClass]="{'invalid': !branchName.valid && !branchName.pristine  && !branchName.untouched}"
-                        required minlength="3">
+                        required minlength="3"
+                        (input)="onFormChanged(form.value)">
                     <div class="alerts" *ngIf="branchName.errors">
-                        <template [ngIf]="branchName.errors.required"><label class="alert">Please fill out this field.</label></template>
-                        <template [ngIf]="branchName.errors.minlength"><label class="alert">Please lenghen this text to {{branchName.errors.minlength.requiredLength}} characters or more (you are currently using {{branchName.errors.minlength.actualLength}} characters).</label></template>
+                        <template [ngIf]="branchName.errors?.required"><label class="alert">Please fill out this field.</label></template>
+                        <template [ngIf]="branchName.errors?.minlength"><label class="alert">Please lenghen this text to {{branchName.errors.minlength.requiredLength}} characters or more (you are currently using {{branchName.errors.minlength.actualLength}} characters).</label></template>
                     </div>
 				</div>
 			</div>
@@ -58,10 +59,11 @@
 					<input type="text"
                         ngControl="fullName" #fullName="ngForm"
                         [ngClass]="{'invalid': !fullName.valid && !fullName.pristine  && !fullName.untouched}"
-                        required minlength="3">
+                        required minlength="3"
+                        (input)="onFormChanged(form.value)">
                     <div class="alerts" *ngIf="fullName.errors">
-                        <template [ngIf]="fullName.errors.required"><label class="alert">Please fill out this field.</label></template>
-                        <template [ngIf]="fullName.errors.minlength"><label class="alert">Please lenghen this text to {{branchName.errors.minlength.requiredLength}} characters or more (you are currently using {{branchName.errors.minlength.actualLength}} characters).</label></template>
+                        <template [ngIf]="fullName.errors?.required"><label class="alert">Please fill out this field.</label></template>
+                        <template [ngIf]="fullName.errors?.minlength"><label class="alert">Please lenghen this text to {{fullName.errors.minlength.requiredLength}} characters or more (you are currently using {{fullName.errors.minlength.actualLength}} characters).</label></template>
                     </div>
 				</div>
 			</div>
