@@ -16,7 +16,11 @@ export class Component2Component {
     state: Observable<IComponent2>;
     
     constructor (public store: Store<boolean>) {
-        this.state = store.select('Component2Reducer');
+        
+    }
+    
+    ngOnInit() {
+        this.state = this.store.select('Component2Reducer');
     }
     
     toggleSidenav() {
