@@ -1,3 +1,3 @@
-export interface IComponent2 {
+export interface IComponent2State {
   showSidenav: boolean;
 }

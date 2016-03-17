@@ -1,16 +1,15 @@
 import {Component, OnInit} from 'angular2/core';
 import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router, Location} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, PathLocationStrategy, ROUTER_PRIMARY_COMPONENT, Router} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
-
-import {ROUTE_CONFIG} from './route-config';
-import {ApplicationStateService} from '../../services/application-state.service';
-import {ActiveRouteDataService} from '../../services/active-route-data.service';
-
 import {provideStore} from '@ngrx/store';
 import {reducer} from '../reducer'
+
+import {AuthenticationService} from '../../services/authentication.service.ts'
+import {ROUTE_CONFIG} from './route-config';
+import {ActiveRouteDataService} from '../../services/active-route-data.service';
 
 require('style!css!ng2-material/dist/ng2-material.css');
 require('style!css!mdi/css/materialdesignicons.css');
@@ -41,8 +40,8 @@ if ('production' === process.env.ENV) {
         ...HTTP_PROVIDERS,
         ...MATERIAL_PROVIDERS,
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
-        ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
-        ApplicationStateService,
+        ngCore.provide(LocationStrategy, { useClass: PathLocationStrategy }),
+        AuthenticationService,
         ActiveRouteDataService,
         provideStore(reducer)
     ]
@@ -54,7 +53,6 @@ export class AppComponent implements OnInit {
     
     constructor(
         private _router: Router,
-        private _location: Location,
         private _activeRouteData: ActiveRouteDataService
     ) {}
     

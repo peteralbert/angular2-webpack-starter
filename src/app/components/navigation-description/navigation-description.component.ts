@@ -1,5 +1,10 @@
 import {Component} from 'angular2/core';
+import {Observable} from 'rxjs'
+import {Store} from '@ngrx/store';
+
 import {ActiveRouteDataService} from '../../services/active-route-data.service';
+import {INavigationDescriptionState} from './navigation-description.interface'
+import {TOGGLE_SIDENAV} from './navigation-description.actions';
 
 @Component({
   selector: 'navigation-description',
@@ -9,18 +14,19 @@ import {ActiveRouteDataService} from '../../services/active-route-data.service';
 
 export class NavigationDescriptionComponent {
     
-    private _isOpen: boolean = true;
+    data: Observable<INavigationDescriptionState>;
     
-    constructor (public activeRouteData: ActiveRouteDataService) {}
+    constructor (
+        public activeRouteData: ActiveRouteDataService,
+        public store: Store<INavigationDescriptionState>) {}
     
-    public isOpen()
-    {
-        return this._isOpen;
+    ngOnInit() {
+        this.data = this.store.select('NavigationDescriptionReducer');
     }
     
-    public toggle()
-    {
-        this._isOpen = !this._isOpen;
+    toggleSidenav() {
+        console.log('Component2Component::toggleSidenav()');
+        this.store.dispatch({ type: TOGGLE_SIDENAV });
     }
     
 }

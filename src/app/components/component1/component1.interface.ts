@@ -1,5 +1,6 @@
-export interface IComponent1 {
+export interface IComponent1State {
   form: IComponent1Form;
+  showSidenav: boolean;
 }
 
 export interface IComponent1Form {
@@ -9,5 +10,5 @@ export interface IComponent1Form {
 
 export interface ISaveFormAction {
     type: string;
-    form: IComponent1;
+    form: IComponent1Form;
 }

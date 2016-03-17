@@ -1,0 +1,1 @@
+export const TOGGLE_SIDENAV = 'NavigationDescription::TOGGLE_SIDENAV';

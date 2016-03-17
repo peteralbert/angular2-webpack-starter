@@ -3,26 +3,18 @@
 </style>
 <md-content>
     <h3>Sign into <%= TODO: APP_TITLE %></h3>
-    <md-card layout-padding>
-        <!--<md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Sign In</span>
-            </md-card-title-text>
-        </md-card-title>-->
+    <md-card layout="column" layout-padding layout-align="center center">
         <form layout="column" style="width: 100%;"
             novalidate #form="ngForm" (ngSubmit)="submit(form.value)">
-            <md-input-container class="md-block">
-                <!--<label>Username</label>-->
                 <input ngControl="username" #username="ngForm"
                     [ngClass]="{'invalid': !username.valid && !username.pristine  && !username.untouched}"
-                    id="username" type="text" class="validate">
-            </md-input-container>
-            <md-input-container class="md-block">
-                <!--<label>Password</label>-->
+                    id="username" type="text" autofocus="" class="validate"
+                    [ngModel]="data.form.username">
+                <br/>
                 <input ngControl="password" #password="ngForm"
                     [ngClass]="{'invalid': !password.valid && !password.pristine  && !password.untouched}"
-                    id="password" type="password" class="validate">
-            </md-input-container>
+                    id="password" type="password" class="validate"
+                    [ngModel]="data.form.password">
             <md-card-actions layout="row" layout-align="end center">
                 <button type="submit" md-raised-button class="right" aria-label="Login" (click)="submit(form.value)" [disabled]="!form.valid">Sign in</button>
             </md-card-actions>

@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {Observable} from 'rxjs'
 import {Store} from '@ngrx/store';
 
-import {IComponent2} from './component2.interface'
+import {IComponent2State} from './component2.interface'
 import {TOGGLE_SIDENAV} from './component2.actions';
 
 @Component({
@@ -13,14 +13,12 @@ import {TOGGLE_SIDENAV} from './component2.actions';
 
 export class Component2Component {
     
-    state: Observable<IComponent2>;
+    data: Observable<IComponent2State>;
     
-    constructor (public store: Store<boolean>) {
-        
-    }
+    constructor (public store: Store<IComponent2State>) {}
     
     ngOnInit() {
-        this.state = this.store.select('Component2Reducer');
+        this.data = this.store.select('Component2Reducer');
     }
     
     toggleSidenav() {

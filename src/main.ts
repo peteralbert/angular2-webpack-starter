@@ -5,6 +5,7 @@ require('angular-toastr');
 require('style!css!angular-toastr/dist/angular-toastr.css');
 //import {App} from './app/app';
 import {AppComponent} from './app/components/app/app.component';
+import {appInjector} from './app/methods/appInjector';
 
 var adapter = new UpgradeAdapter();
 angular.module('app', ['toastr'])
@@ -13,7 +14,9 @@ angular.module('app', ['toastr'])
 adapter.upgradeNg1Provider('toastr');
 
 export function main() {
-    return adapter.bootstrap(document.body, ['app']);
+    var upgradeAdaptorRef = adapter.bootstrap(document.body, ['app']);
+    appInjector(upgradeAdaptorRef.ng2Injector);
+    return upgradeAdaptorRef;
 }
 
 /*

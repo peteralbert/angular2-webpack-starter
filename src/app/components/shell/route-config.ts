@@ -1,6 +1,7 @@
 import {HomeComponent} from '../home/home.component';
 import {Component1Component} from '../component1/component1.component';
 import {Component2Component} from '../component2/component2.component';
+import {Component3Component} from '../component3/component3.component';
 import {AboutComponent} from '../about/about.component';
 
 export const ROUTE_CONFIG = [
@@ -37,6 +38,18 @@ export const ROUTE_CONFIG = [
             description: require('../component2/description.tpl.html'),
             icon: 'mdi-numeric-2-box',
             class: 'component-2'
+        }
+    },
+    {
+        path: '/component3',
+        name: 'Component3',
+        component: Component3Component,
+        data: {
+            component: 'Component3Component',
+            label: 'Example Form',
+            description: require('../component3/description.tpl.html'),
+            icon: 'mdi-numeric-3-box',
+            class: 'component-1'
         }
     },
     {

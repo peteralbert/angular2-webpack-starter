@@ -11,19 +11,19 @@
     }
 </style>
 <div flex layout="row" layout-padding>
-    <h1>Component 2</h1>
+    showSidenav: {{(data | async).showSidenav}}
 </div>
 <div layout="row">
-    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggleSidenav()" *ngIf="!(state | async).showSidenav" title="Open Sidenav.">
+    <div class="toggle-container" layout="row" layout-align="center center" (click)="toggleSidenav()" *ngIf="!(data | async).showSidenav" title="Open Sidenav.">
         <div>
             <a class="toggle" aria-label="Toggle">
                 <i class="mdi mdi-menu-left"></i>
             </a>
         </div>
     </div>
-    <div flex layout="row" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" *ngIf="(state | async).showSidenav">
-        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggleSidenav()" *ngIf="(state | async).showSidenav" title="Close Sidenav.">
-            <a class="toggle" aria-label="Toggle" layout layout-align="center center" *ngIf="(state | async).showSidenav">
+    <div flex layout="row" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" *ngIf="(data | async).showSidenav">
+        <div class="toggle-container" layout="row" layout-align="center center" (click)="toggleSidenav()" *ngIf="(data | async).showSidenav" title="Close Sidenav.">
+            <a class="toggle" aria-label="Toggle" layout layout-align="center center" *ngIf="(data | async).showSidenav">
                 <i class="mdi mdi-menu-right"></i>
             </a>
         </div>
@@ -32,6 +32,7 @@
                 <h1 class="md-toolbar-tools" translate>Sidenav</h1>
             </md-toolbar>
             <md-content flex layout style="width: 300px;">
+                
             </md-content>
         </div>
     </div>
