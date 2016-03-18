@@ -1,10 +1,10 @@
-import {User} from '../../models/user.ts'
+import {IUser} from '../../models/user.ts'
 
 export interface IAppState {
-  user: User
+  user: IUser
 }
 
 export interface ISaveUserAction {
     type: string;
-    user: User;
+    user: IUser;
 }

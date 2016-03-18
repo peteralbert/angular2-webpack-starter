@@ -25,7 +25,6 @@ export class NavigationDescriptionComponent {
     }
     
     toggleSidenav() {
-        console.log('Component2Component::toggleSidenav()');
         this.store.dispatch({ type: TOGGLE_SIDENAV });
     }
     

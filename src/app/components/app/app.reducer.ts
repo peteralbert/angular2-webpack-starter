@@ -1,10 +1,10 @@
 import {Reducer, Action} from '@ngrx/store';
 import {IAppState, ISaveUserAction} from './app.interface'
 import {SAVE_USER} from './app.actions'
-import {User} from '../../models/user.ts'
+import {IUser} from '../../models/user.ts'
 
 let initialState: IAppState = {
-    user: <User>{
+    user: <IUser>{
         id: 0,
         username: '',
         displayName: '',
@@ -12,7 +12,7 @@ let initialState: IAppState = {
     }
 };
 
-export const AppReducer:Reducer<IAppState> = (state: IAppState = initialState, action:ISaveUserAction) => {
+export const AppReducer:Reducer<IAppState> = (state: IAppState = {initialState}, action:ISaveUserAction) => {
     switch (action.type) {
         case SAVE_USER:
             console.log('AppReducer::SAVE_USER');

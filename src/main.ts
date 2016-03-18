@@ -1,46 +1,12 @@
-let angular = require('angular');
-import {UpgradeAdapter} from 'angular2/upgrade';
-
-require('angular-toastr');
-require('style!css!angular-toastr/dist/angular-toastr.css');
-//import {App} from './app/app';
+import {bootstrap} from 'angular2/platform/browser';
 import {AppComponent} from './app/components/app/app.component';
 import {appInjector} from './app/methods/appInjector';
+import {ROUTER_PROVIDERS, Router} from 'angular2/router';
+import {AuthenticationService} from './app/services/authentication.service.ts'
 
-var adapter = new UpgradeAdapter();
-angular.module('app', ['toastr'])
-    .directive('app', adapter.downgradeNg2Component(AppComponent));
-
-adapter.upgradeNg1Provider('toastr');
-
-export function main() {
-    var upgradeAdaptorRef = adapter.bootstrap(document.body, ['app']);
-    appInjector(upgradeAdaptorRef.ng2Injector);
-    return upgradeAdaptorRef;
-}
-
-/*
- * Hot Module Reload
- * experimental version by @gdi2290
- */
-
-function bootstrapDomReady() {
-  // bootstrap after document is ready
-  return document.addEventListener('DOMContentLoaded', main);
-}
-
-if ('development' === process.env.ENV) {
-  // activate hot module reload
-  if (process.env.HMR) {
-    if (document.readyState === 'complete') {
-      main();
-    } else {
-      bootstrapDomReady();
-    }
-    module.hot.accept();
-  } else {
-    bootstrapDomReady();
-  }
-} else {
-  bootstrapDomReady();
-}
+bootstrap(AppComponent, [
+    AuthenticationService,
+    ROUTER_PROVIDERS
+]).then((ref) => {
+   appInjector(ref.injector); 
+});

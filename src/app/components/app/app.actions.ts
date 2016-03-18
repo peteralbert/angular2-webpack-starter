@@ -1,9 +1,9 @@
 import {IAppState, ISaveUserAction} from './app.interface'
-import {User} from '../../models/user.ts'
+import {IUser} from '../../models/user.ts'
 
 export const SAVE_USER = 'App::SAVE_USER';
 
-export const saveUser = (user: User): ISaveUserAction => {
+export const saveUser = (user: IUser): ISaveUserAction => {
     return {
         type: SAVE_USER,
         user: user

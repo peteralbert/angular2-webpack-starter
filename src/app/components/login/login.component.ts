@@ -7,7 +7,7 @@ import {ILoginState, ILoginForm, ISaveFormAction} from './login.interface.ts'
 import {saveForm} from './login.actions';
 import {saveUser} from '../app/app.actions';
 import {AuthenticationService} from '../../services/authentication.service.ts'
-import {User} from '../../models/user.ts'
+import {IUser} from '../../models/user.ts'
 
 @Component({
   selector: 'login',
@@ -17,7 +17,7 @@ import {User} from '../../models/user.ts'
 
 export class LoginComponent {
     
-    user: User;
+    user: IUser;
     data: ILoginState;
     
     constructor(
@@ -34,9 +34,7 @@ export class LoginComponent {
         
     }
     
-    submit(form: any) {
-        console.log('LoginComponent::save(form)');
-        console.log(form);
+    submit(form: ILoginForm) {
         this._store.dispatch(saveForm(form));
         this._authentication.authenticateUser(form.username, form.password).subscribe(user => {
             if (user.isAuthenticated) {

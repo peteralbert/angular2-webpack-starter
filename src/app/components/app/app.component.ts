@@ -5,11 +5,11 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, Path
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 import {provideStore} from '@ngrx/store';
-import {reducer} from '../reducer'
 
 import {AuthenticationService} from '../../services/authentication.service.ts'
 import {ROUTE_CONFIG} from './route-config';
 import {ActiveRouteDataService} from '../../services/active-route-data.service';
+import {reducer} from '../reducer'
 
 require('style!css!ng2-material/dist/ng2-material.css');
 require('style!css!mdi/css/materialdesignicons.css');
@@ -36,12 +36,10 @@ if ('production' === process.env.ENV) {
     ],
     providers: [
         ...ENV_PROVIDERS,
-        ...ROUTER_PROVIDERS,
         ...HTTP_PROVIDERS,
         ...MATERIAL_PROVIDERS,
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: PathLocationStrategy }),
-        AuthenticationService,
         ActiveRouteDataService,
         provideStore(reducer)
     ]

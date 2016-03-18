@@ -16,7 +16,7 @@
                     id="password" type="password" class="validate"
                     [ngModel]="data.form.password">
             <md-card-actions layout="row" layout-align="end center">
-                <button type="submit" md-raised-button class="right" aria-label="Login" (click)="submit(form.value)" [disabled]="!form.valid">Sign in</button>
+                <button type="submit" md-raised-button class="right" aria-label="Login" [disabled]="!form.valid">Sign in</button>
             </md-card-actions>
         </form>
     </md-card>

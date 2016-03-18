@@ -4,6 +4,7 @@ export interface ILoginState {
 
 export interface ILoginForm {
   username: string;
+  password: string;
 }
 
 export interface ISaveFormAction {

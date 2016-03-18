@@ -6,4 +6,5 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   template: require('./about.tpl.html'),
   host: {'flex': '', 'layout': 'column'}
 })
+
 export class AboutComponent {}

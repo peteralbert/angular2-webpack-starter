@@ -39,13 +39,10 @@ export class Component1Component {
     }
     
     save(form: IComponent1Form) : void {
-        console.log('Component1Component::save(form)');
-        console.log(form);
         this._store.dispatch(saveForm(form));
     }
     
     toggleSidenav() {
-        console.log('Component2Component::toggleSidenav()');
         this._store.dispatch({ type: TOGGLE_SIDENAV });
     }
     
