@@ -15,9 +15,7 @@ export const navigationDescription:Reducer<INavigationDescriptionState> = (state
 const sidenav:Reducer<ISidenavState> = (state: ISidenavState = <ISidenavState>{}, action: IToggleSidenavAction) => {
     switch (action.type) {
         case TOGGLE_SIDENAV:
-            console.log('Component1Reducer::TOGGLE_SIDENAV');
-            console.log(Object.assign({}, state, { showSidenav: !state.visible }));
-            return Object.assign({}, state, { showSidenav: !state.visible });
+            return Object.assign({}, state, { visible: !state.visible });
         default:
             return state;
     }

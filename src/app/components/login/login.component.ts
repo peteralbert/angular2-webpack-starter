@@ -3,6 +3,7 @@ import {Router} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 
+import {IAppComponentState} from '../app/app.interface';
 import {ILoginState, ILoginFormState, ISaveFormAction} from './login.interface.ts';
 import {saveForm} from './login.actions';
 import {saveUser} from '../app/app.actions';
@@ -22,11 +23,11 @@ export class LoginComponent {
     
     constructor(
         private _authentication: AuthenticationService,
-        private _store: Store<ILoginState>,
+        private _store: Store<IAppComponentState>,
         private _router: Router
     ) {
-        this._store.select('login').subscribe((data) => {
-            this.data = <ILoginState>data;
+        this._store.subscribe((data) => {
+            this.data = (<IAppComponentState>data)._public.login;
         });
     }
     

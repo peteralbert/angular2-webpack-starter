@@ -7,7 +7,6 @@ import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 import {provideStore, Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
-import {IAppComponentState} from './app.interface.ts';
 import {AuthenticationService} from '../../services/authentication.service.ts';
 import {ROUTE_CONFIG} from './route-config';
 import {ActiveRouteDataService} from '../../services/active-route-data.service';
@@ -43,7 +42,7 @@ if ('production' === process.env.ENV) {
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: PathLocationStrategy }),
         ActiveRouteDataService,
-        provideStore(app)
+        provideStore(app, {})
     ]
 })
 
@@ -51,17 +50,10 @@ if ('production' === process.env.ENV) {
 
 export class AppComponent implements OnInit {
     
-    data: IAppComponentState;
-    
     constructor(
-        private _store: Store<IAppComponentState>,
         private _router: Router,
         private _activeRouteData: ActiveRouteDataService
-    ) {
-        this._store.select('login').subscribe((data) => {
-            this.data = <IAppComponentState>data;
-        });
-    }
+    ) {}
     
     ngOnInit() {
         this._router.subscribe((url) => {

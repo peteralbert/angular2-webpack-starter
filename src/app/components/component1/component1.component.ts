@@ -8,6 +8,7 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
+import {IAppComponentState} from '../app/app.interface';
 import {IComponent1State, IComponent1FormState} from './component1.interface';
 import {saveForm, TOGGLE_SIDENAV} from './component1.actions';
 
@@ -22,16 +23,16 @@ export class Component1Component {
     data: IComponent1State;
     @ViewChild('form') ngForm: NgForm;
     
-    constructor(private _store: Store<IComponent1State>) {
-        this._store.select('Component1Reducer').subscribe((data) => {
-            this.data = <IComponent1State>data;
+    constructor(private _store: Store<IAppComponentState>) {
+        this._store.subscribe((data) => {
+            this.data = (<IAppComponentState>data).shell.component1;
         });
     }
             
     ngAfterViewInit() {
         this.ngForm.form.valueChanges
             .skip(1)
-            .debounceTime(400)
+            .debounceTime(500)
             .distinctUntilChanged()
             .subscribe((form: IComponent1FormState) => {
                 this.save(form)

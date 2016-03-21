@@ -25,8 +25,6 @@ export const app:Reducer<IAppComponentState> = (state: IAppComponentState = <IAp
 const user:Reducer<IUserState> = (state: IUserState = <IUserState>{}, action: ISaveUserAction) => {
     switch (action.type) {
         case SAVE_USER:
-            console.log('AppReducer::SAVE_USER');
-            console.log(Object.assign({}, state, { user: action.user }));
             return Object.assign({}, state, { user: action.user });
         default:
             return state;

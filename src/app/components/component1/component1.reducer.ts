@@ -19,9 +19,7 @@ export const component1:Reducer<IComponent1State> = (state: IComponent1State = <
 const form:Reducer<IComponent1FormState> = (state: IComponent1FormState = <IComponent1FormState>{}, action: ISaveFormAction) => {
     switch (action.type) {
         case SAVE_FORM:
-            console.log('Component1Reducer::SAVE_FORM');
-            console.log(Object.assign({}, state, { form: action.form }));
-            return Object.assign({}, state, { form: action.form });
+            return Object.assign({}, state, action.form);
         default:
             return state;
     }
@@ -30,9 +28,7 @@ const form:Reducer<IComponent1FormState> = (state: IComponent1FormState = <IComp
 const sidenav:Reducer<ISidenavState> = (state: ISidenavState = <ISidenavState>{}, action: IToggleSidenavAction) => {
     switch (action.type) {
         case TOGGLE_SIDENAV:
-            console.log('Component1Reducer::TOGGLE_SIDENAV');
-            console.log(Object.assign({}, state, { showSidenav: !state.visible }));
-            return Object.assign({}, state, { showSidenav: !state.visible });
+            return Object.assign({}, state, { visible: !state.visible });
         default:
             return state;
     }

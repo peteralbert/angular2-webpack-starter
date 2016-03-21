@@ -14,9 +14,7 @@ export const login:Reducer<ILoginState> = (state: ILoginState = <ILoginState>{},
 const form:Reducer<ILoginFormState> = (state: ILoginFormState = <ILoginFormState>{}, action: ISaveFormAction) => {
     switch (action.type) {
         case SAVE_FORM:
-            console.log('LoginReducer::SAVE_FORM');
-            console.log(Object.assign({}, state, { form: action.form }));
-            return Object.assign({}, state, { form: action.form });
+            return Object.assign({}, state, action.form);
         default:
             return state;
     }
