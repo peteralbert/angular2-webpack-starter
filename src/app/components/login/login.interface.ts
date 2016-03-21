@@ -1,13 +1,13 @@
 export interface ILoginState {
-  form: ILoginForm
+  form: ILoginFormState
 }
 
-export interface ILoginForm {
+export interface ILoginFormState {
   username: string;
   password: string;
 }
 
 export interface ISaveFormAction {
     type: string;
-    form: ILoginForm;
+    form: ILoginFormState;
 }

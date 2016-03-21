@@ -3,7 +3,7 @@ import {Observable} from 'rxjs'
 import {Store} from '@ngrx/store';
 
 import {ActiveRouteDataService} from '../../services/active-route-data.service';
-import {INavigationDescriptionState} from './navigation-description.interface'
+import {INavigationDescriptionState} from './navigation-description.interface';
 import {TOGGLE_SIDENAV} from './navigation-description.actions';
 
 @Component({

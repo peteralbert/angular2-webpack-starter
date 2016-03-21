@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/toPromise';
 
 import {ROUTE_CONFIG} from './route-config';
-import {checkAuthenticated} from '../../methods/checkAuthenticated'
+import {checkAuthenticated} from '../../methods/checkAuthenticated';
 import {ActiveRouteDataService} from '../../services/active-route-data.service';
 
 import {ShellHeaderComponent} from '../shell-header/shell-header.component';

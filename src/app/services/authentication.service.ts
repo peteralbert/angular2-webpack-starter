@@ -1,6 +1,6 @@
 import {Injectable, Inject} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
-import {IUser} from '../models/user';
+import {IUserState} from '../models/user';
 
 @Injectable()
 export class AuthenticationService {
@@ -11,14 +11,14 @@ export class AuthenticationService {
         this._isAuthenticated = false;
     }
     
-    authenticateUser(username: string, password: string) : Observable<IUser> {
+    authenticateUser(username: string, password: string) : Observable<IUserState> {
         return Observable.create((observer) => {
             if (username == 'admin' && password=='admin') {
                 this._isAuthenticated = true;
-                observer.next(<IUser>{ id: 1, username: username, displayName: 'Administrator', isAuthenticated: this._isAuthenticated })
+                observer.next(<IUserState>{ id: 1, username: username, displayName: 'Administrator', isAuthenticated: this._isAuthenticated })
             } else {
                 this._isAuthenticated = false;
-                observer.next(<IUser>{ id: 0, username: '', displayName: '', isAuthenticated: this._isAuthenticated })
+                observer.next(<IUserState>{ id: 0, username: '', displayName: '', isAuthenticated: this._isAuthenticated })
             }
         })
     }

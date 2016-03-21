@@ -3,11 +3,11 @@ import {Router} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 
-import {ILoginState, ILoginForm, ISaveFormAction} from './login.interface.ts'
+import {ILoginState, ILoginFormState, ISaveFormAction} from './login.interface.ts';
 import {saveForm} from './login.actions';
 import {saveUser} from '../app/app.actions';
-import {AuthenticationService} from '../../services/authentication.service.ts'
-import {IUser} from '../../models/user.ts'
+import {AuthenticationService} from '../../services/authentication.service.ts';
+import {IUserState} from '../../models/user.ts';
 
 @Component({
   selector: 'login',
@@ -17,7 +17,7 @@ import {IUser} from '../../models/user.ts'
 
 export class LoginComponent {
     
-    user: IUser;
+    user: IUserState;
     data: ILoginState;
     
     constructor(
@@ -25,7 +25,7 @@ export class LoginComponent {
         private _store: Store<ILoginState>,
         private _router: Router
     ) {
-        this._store.select('LoginReducer').subscribe((data) => {
+        this._store.select('login').subscribe((data) => {
             this.data = <ILoginState>data;
         });
     }
@@ -34,7 +34,7 @@ export class LoginComponent {
         
     }
     
-    submit(form: ILoginForm) {
+    submit(form: ILoginFormState) {
         this._store.dispatch(saveForm(form));
         this._authentication.authenticateUser(form.username, form.password).subscribe(user => {
             if (user.isAuthenticated) {

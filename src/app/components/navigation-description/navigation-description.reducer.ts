@@ -1,19 +1,26 @@
 import {Reducer, Action} from '@ngrx/store';
-import {INavigationDescriptionState} from './navigation-description.interface'
-import {TOGGLE_SIDENAV} from './navigation-description.actions'
+import {INavigationDescriptionState, IToggleSidenavAction} from './navigation-description.interface';
+import {ISidenavState} from '../../models/sidenav';
+import {TOGGLE_SIDENAV} from './navigation-description.actions';
 
-let initialState: INavigationDescriptionState = {
-    showSidenav: true
+export const navigationDescription:Reducer<INavigationDescriptionState> = (state:INavigationDescriptionState = <INavigationDescriptionState>{}, action:Action) => {
+    return {
+        sidenav: sidenav(
+            state.sidenav,
+            action
+        )
+    };
 }
 
-export const NavigationDescriptionReducer:Reducer<INavigationDescriptionState> = (state:INavigationDescriptionState = initialState, action:Action) => {
+const sidenav:Reducer<ISidenavState> = (state: ISidenavState = <ISidenavState>{}, action: IToggleSidenavAction) => {
     switch (action.type) {
         case TOGGLE_SIDENAV:
-            console.log('NavigationDescriptionReducer::TOGGLE_SIDENAV');
-            console.log(Object.assign({}, state, { showSidenav: !state.showSidenav }));
-            return Object.assign({}, state, { showSidenav: !state.showSidenav });
+            console.log('Component1Reducer::TOGGLE_SIDENAV');
+            console.log(Object.assign({}, state, { showSidenav: !state.visible }));
+            return Object.assign({}, state, { showSidenav: !state.visible });
         default:
             return state;
     }
 }
+
 

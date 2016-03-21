@@ -1,27 +1,39 @@
 import {Reducer, Action} from '@ngrx/store';
-import {IComponent1State, ISaveFormAction} from './component1.interface'
-import {SAVE_FORM, TOGGLE_SIDENAV} from './component1.actions'
+import {IComponent1State, IComponent1FormState, ISaveFormAction, IToggleSidenavAction} from './component1.interface';
+import {ISidenavState} from '../../models/sidenav';
+import {SAVE_FORM, TOGGLE_SIDENAV} from './component1.actions';
 
-let initialState: IComponent1State = {
-    form: {
-        branchName: 'Deutsche Kredit Bank',
-        fullName: 'Robert Brower'
-    },
-    showSidenav: true
-};
+export const component1:Reducer<IComponent1State> = (state: IComponent1State = <IComponent1State>{}, action) => {
+    return {
+        form: form(
+            state.form,
+            action
+        ),
+        sidenav: sidenav(
+            state.sidenav,
+            action
+        )
+    };
+}
 
-export const Component1Reducer:Reducer<IComponent1State> = (state: IComponent1State = initialState, action:ISaveFormAction) => {
+const form:Reducer<IComponent1FormState> = (state: IComponent1FormState = <IComponent1FormState>{}, action: ISaveFormAction) => {
     switch (action.type) {
         case SAVE_FORM:
             console.log('Component1Reducer::SAVE_FORM');
             console.log(Object.assign({}, state, { form: action.form }));
             return Object.assign({}, state, { form: action.form });
-        case TOGGLE_SIDENAV:
-            console.log('Component1Reducer::TOGGLE_SIDENAV');
-            console.log(Object.assign({}, state, { showSidenav: !state.showSidenav }));
-            return Object.assign({}, state, { showSidenav: !state.showSidenav });
         default:
             return state;
     }
 }
 
+const sidenav:Reducer<ISidenavState> = (state: ISidenavState = <ISidenavState>{}, action: IToggleSidenavAction) => {
+    switch (action.type) {
+        case TOGGLE_SIDENAV:
+            console.log('Component1Reducer::TOGGLE_SIDENAV');
+            console.log(Object.assign({}, state, { showSidenav: !state.visible }));
+            return Object.assign({}, state, { showSidenav: !state.visible });
+        default:
+            return state;
+    }
+}

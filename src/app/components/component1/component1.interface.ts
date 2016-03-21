@@ -1,14 +1,20 @@
+import {ISidenavState} from '../../models/sidenav';
+
 export interface IComponent1State {
-  form: IComponent1Form;
-  showSidenav: boolean;
+  form: IComponent1FormState;
+  sidenav: ISidenavState;
 }
 
-export interface IComponent1Form {
+export interface IComponent1FormState {
   branchName: string;
   fullName: string;
 }
 
 export interface ISaveFormAction {
     type: string;
-    form: IComponent1Form;
+    form: IComponent1FormState;
+}
+
+export interface IToggleSidenavAction {
+    type: string;
 }

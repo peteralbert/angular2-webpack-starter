@@ -9,12 +9,12 @@
                 <input ngControl="username" #username="ngForm"
                     [ngClass]="{'invalid': !username.valid && !username.pristine  && !username.untouched}"
                     id="username" type="text" autofocus="" class="validate"
-                    [ngModel]="data.form.username">
+                    [ngModel]="data.form?.username">
                 <br/>
                 <input ngControl="password" #password="ngForm"
                     [ngClass]="{'invalid': !password.valid && !password.pristine  && !password.untouched}"
                     id="password" type="password" class="validate"
-                    [ngModel]="data.form.password">
+                    [ngModel]="data.form?.password">
             <md-card-actions layout="row" layout-align="end center">
                 <button type="submit" md-raised-button class="right" aria-label="Login" [disabled]="!form.valid">Sign in</button>
             </md-card-actions>

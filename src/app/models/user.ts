@@ -1,6 +1,5 @@
-export interface IUser {
+export interface IUserState {
   id: number;
   username: string;
-  displayName: string;
   isAuthenticated: boolean;
 }

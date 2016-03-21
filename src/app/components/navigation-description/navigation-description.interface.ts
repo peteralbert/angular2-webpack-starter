@@ -1,3 +1,9 @@
+import {ISidenavState} from '../../models/sidenav';
+
 export interface INavigationDescriptionState {
-  showSidenav: boolean;
+  sidenav: ISidenavState;
+}
+
+export interface IToggleSidenavAction {
+    type: string;
 }

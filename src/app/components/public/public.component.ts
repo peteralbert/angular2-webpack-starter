@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {ROUTE_CONFIG} from './route-config'
+import {ROUTE_CONFIG} from './route-config';
 import {PublicHeaderComponent} from '../public-header/public-header.component';
 import {FooterComponent} from '../footer/footer.component';
 
