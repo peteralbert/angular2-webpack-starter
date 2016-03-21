@@ -1,9 +1,10 @@
 import {Reducer, Action} from '@ngrx/store';
-import {IAppComponentState, ISaveUserAction} from './app.interface';
-import {SAVE_USER} from './app.actions';
+import {IAppComponentState, ISaveUserAction, ISaveRouteDataAction} from './app.interface';
+import {SAVE_USER, SAVE_ROUTE_DATA} from './app.actions';
 import {IUserState} from '../../models/user.ts';
 import {_public} from '../public/public.reducer';
 import {shell} from '../shell/shell.reducer';
+import {RouteData} from 'angular2/router';
 
 export const app:Reducer<IAppComponentState> = (state: IAppComponentState = <IAppComponentState>{}, action) => {
     return {
@@ -18,6 +19,10 @@ export const app:Reducer<IAppComponentState> = (state: IAppComponentState = <IAp
         shell: shell(
             state.shell,
             action
+        ),
+        routeData: routeData(
+            state.routeData,
+            action
         )
     };
 }
@@ -26,6 +31,15 @@ const user:Reducer<IUserState> = (state: IUserState = <IUserState>{}, action: IS
     switch (action.type) {
         case SAVE_USER:
             return Object.assign({}, state, { user: action.user });
+        default:
+            return state;
+    }
+}
+
+const routeData:Reducer<RouteData> = (state: RouteData = <RouteData>{}, action: ISaveRouteDataAction) => {
+    switch (action.type) {
+        case SAVE_ROUTE_DATA:
+            return Object.assign({}, state, action.routeData);
         default:
             return state;
     }

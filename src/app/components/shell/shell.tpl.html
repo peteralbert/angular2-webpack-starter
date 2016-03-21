@@ -1,7 +1,7 @@
 <div flex layout="column">
     <shell-header></shell-header>
     <div flex layout="row">
-        <navigation-description *ngIf="activeRouteData.data?.description"></navigation-description>
+        <navigation-description *ngIf="routeData.data?.description"></navigation-description>
         <div id="content" flex layout="row">
             <router-outlet></router-outlet>
         </div>

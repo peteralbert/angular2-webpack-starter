@@ -2,8 +2,6 @@ import {Component, ViewChild} from 'angular2/core';
 import {NgForm, ControlGroup} from 'angular2/common';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';

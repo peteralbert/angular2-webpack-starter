@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
@@ -16,7 +16,7 @@ import {IUserState} from '../../models/user.ts';
   host: {'flex': '', 'layout': 'column', 'layout-align': 'center center'}
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     
     user: IUserState;
     data: ILoginState;

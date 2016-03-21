@@ -20,7 +20,7 @@
                 [routerLink]="['/Shell/' + route.name]"
                 (mouseover)="mouseOverComponent=route.component.name"
                 (mouseout)="mouseOverComponent=undefined"
-                [ngClass]="{'md-accent': mouseOverComponent ==  route.component.name || activeRouteData.data?.component == route.component.name }">
+                [ngClass]="{'md-accent': mouseOverComponent ==  route.component.name || routeData.data?.component == route.component.name }">
                 <span class="text" hide-md hide-sm hide-xs show-gt-md>{{route.data.label}}</span>
                 <span class="icon" layout layout-align="center center" show-md hide-gt-md>
                     <i [class]="'mdi ' + route.data.icon"></i>

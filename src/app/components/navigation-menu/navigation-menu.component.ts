@@ -1,7 +1,11 @@
-import {Component, Inject, provide} from 'angular2/core';
+import {Component, Inject, provide, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {ROUTE_CONFIG} from '../shell/route-config';
-import {ActiveRouteDataService} from '../../services/active-route-data.service';
+import {Observable} from 'rxjs'
+import {Store} from '@ngrx/store';
+import {RouteData} from 'angular2/router';
+
+import {IAppComponentState} from '../app/app.interface';
 
 @Component({
   selector: 'navigation-menu',
@@ -12,11 +16,19 @@ import {ActiveRouteDataService} from '../../services/active-route-data.service';
   ]
 })
 
-export class NavigationMenuComponent {
+export class NavigationMenuComponent implements OnInit {
+    
+    routeData: RouteData;
     
     constructor(
         @Inject('ROUTE_CONFIG') public routes:any,
-        public activeRouteData: ActiveRouteDataService
+        private _store: Store<IAppComponentState>
     ) {}
+    
+    ngOnInit() {
+        this._store.subscribe((data) => {
+            this.routeData = (<IAppComponentState>data).routeData;
+        });
+    }
     
 }

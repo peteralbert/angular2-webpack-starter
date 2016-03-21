@@ -16,7 +16,7 @@
             <md-toolbar class="md-theme-light">
                 <h1 class="md-toolbar-tools" translate>Description</h1>
             </md-toolbar>
-            <md-content flex layout [innerHTML]="activeRouteData.data?.description" style="width: 300px;">
+            <md-content flex layout [innerHTML]="routeData.data?.description" style="width: 300px;">
             </md-content>
         </div>
         <div class="toggle-container" layout="row" layout-align="center center" (click)="toggleSidenav()" *ngIf="data.sidenav.visible" title="Close description.">

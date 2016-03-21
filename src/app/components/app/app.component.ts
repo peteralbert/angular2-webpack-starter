@@ -10,8 +10,8 @@ import {Observable} from 'rxjs/Observable';
 import {IAppComponentState} from '../app/app.interface';
 import {AuthenticationService} from '../../services/authentication.service.ts';
 import {ROUTE_CONFIG} from './route-config';
-import {ActiveRouteDataService} from '../../services/active-route-data.service';
 import {app} from './app.reducer';
+import {saveRouteData} from '../app/app.actions';
 
 require('style!css!ng2-material/dist/ng2-material.css');
 require('style!css!mdi/css/materialdesignicons.css');
@@ -42,7 +42,6 @@ if ('production' === process.env.ENV) {
         ...MATERIAL_PROVIDERS,
         ngCore.provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
         ngCore.provide(LocationStrategy, { useClass: PathLocationStrategy }),
-        ActiveRouteDataService,
         provideStore(app, {})
     ]
 })
@@ -53,8 +52,7 @@ export class AppComponent implements OnInit {
     
     constructor(
         private _store: Store<IAppComponentState>,
-        private _router: Router,
-        private _activeRouteData: ActiveRouteDataService
+        private _router: Router
     ) {
         this._store.subscribe((data) => {
             console.log(data);
@@ -65,7 +63,7 @@ export class AppComponent implements OnInit {
         this._router.subscribe((url) => {
            this._router.recognize(url).then((instruction) => {
                if (instruction.child) {
-                   this._activeRouteData.data = instruction.child.component.routeData.data;
+                   this._store.dispatch(saveRouteData(instruction.child.component.routeData));
                }
            });
         });
